@@ -19,4 +19,4 @@ Tecnologias: Express, Nodemon, HTML e CSS
 ✒️ Autores
 João Rubens Alves Costa - ([https://github.com/CpyRubens)])
 📄 Licença
-Este projeto está sob a licença (Mozilla Public License 2.0) - veja o arquivo LICENSE.md ([https://github.com/CpyRubens/projeto3-recuperado]) para detalhes.
+Este projeto está sob a licença (Mozilla Public License 2.0) - veja o arquivo LICENSE.md ([https://github.com/CpyRubens/projeto3-rec]) para detalhes.
