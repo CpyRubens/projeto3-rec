@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style1.css">
+    <title>Marvel List</title>
+
+</head>
+
+<body>
+
+    <nav>
+        <ul>
+            <li><img src="http://assets.stickpng.com/images/585f9333cb11b227491c3581.png" alt=""></li>
+            <li>
+                <a href="/"><h1>Marvel Characters</h1></a>
+            </li>
+            <li><a href="#cadastro">Cadastre um Persogem</a></li>
+            <li><a href="#cards">Lista de Personagens</a></li>
+        </ul>
+    </nav>
+    
+    <% if(check == 0){ %>
+        <section id="details">
+            
+            <div class="detail" style="background: url(<%= character.imgbg %>); background-repeat: no-repeat; background-size: cover; background-position: center; background-attachment: scroll;">
+
+                <div class="container">
+                    <img src="<%= character.imagem2 %>" alt="">
+                </div>
+
+                <div class="text">
+                    <h2>
+                        <%= character.heroi %>
+                    </h2>
+                    <p>
+                        Nome: <%= character.nome %>
+                    </p>
+                    <p>Altura: <%= character.altura %></p>
+                    <p>Peso: <%= character.peso %></p>
+                    <p>Sobre: <%= character.sobre %></p>
+                    <p>Especie: <%= character.especie %></p>
+                    <p>Aliança: <%= character.alianca %></p>
+                </div>
+                <button class="close">x</button>
+            </div>
+
+            
+
+            <% } %>
+           
+        </section>
+
+
+    <% if(message !="" ) { %>
+        <section id="message">
+            <p>
+                <%= message %>
+            </p> <span id="close">&times;</span>
+        </section>
+        <% } %>
+
+            <main>
+
+                <section id="cards">
+
+                    <% characterList.forEach((character)=> {%>
+                        <div class="card">
+                            <div class="container">
+                                <img src="<%= character.imagem %>" alt="">
+                            </div>
+                            <div class="caracteristicas">
+                                <h2>
+                                    <%= character.heroi %>
+                                </h2>
+                                <p>
+                                    Nome: <%= character.nome %>
+                                </p>
+                                <p>Aliança: <%= character.alianca %>
+                                </p>
+                            </div>
+                            <div id=btns>
+                                <a class="edt" href="/detalhes/<%= character.id %>">Editar</a>
+                                <a href="/deletar/<%= character.id %>">Apagar</a>
+                                <a class="dtl" href="/vermais/<%= character.id %>">Detalhes</a>
+                            </div>
+                            
+                        </div>
+
+                        <%}) %>
+                         
+                        
+                </section>
+
+                <section id="cadastro">
+
+                    <% if(character!=undefined && check == 1){ %>
+
+                        <h2>Editar <%= character.nome %>:</h2>
+                                
+                        <form action="/update/<%= character.id %>" method="POST">
+                            <label for="heroi">Herói:</label>
+                            <input type="text" id="heroi" name="heroi" required value="<%= character.heroi %>">
+
+                            <label for="nome">Nome:</label>
+                            <input type="text" id="nome" name="nome" required value="<%= character.nome %>">
+
+                            <label for="alianca">Aliança:</label>
+                            <input type="text" id="alianca" name="alianca" required value="<%= character.alianca %>">
+
+                            <label for="altura">Altura:</label>
+                            <input type="text" id="altura" name="altura" required value="<%= character.altura %>">
+
+                            <label for="peso":>Peso:</label>
+                            <input type="text" id="peso" name="peso" required value="<%= character.peso %>">
+
+                            <label for="sobre">Sobre:</label>
+                            <input type="text" id="sobre" name="sobre" required value="<%= character.sobre %>">
+
+                            <label for="especie">Espécie:</label>
+                            <input type="text" id="especie" name="especie" required value="<%= character.especie %>"> 
+
+                            <label for="imagem">Link da Imagem:</label>
+                            <input type="url" id="imagem" name="imagem" required value="<%= character.imagem %>">
+
+                            <label for="imagem2">Link da Imagem secundária:</label>
+                            <input type="url" id="imagem2" name="imagem2" required value="<%= character.imagem2 %>">
+
+                            <label for="imgbg">Link da imagem de fundo:</label>
+                            <input type="url" id="imgbg" name="imgbg" required value="<%= character.imgbg %>">
+
+                            <button id="btnCadastrar" type="submit">Editar</button>
+
+                        </form>
+
+                    <% } else { %>
+
+                        <h2>Cadastre um novo character!</h2>
+
+                        <form action="/add" method="POST">
+                            <label for="heroi">Herói:</label>
+                            <input type="text" id="heroi" name="heroi" required>
+
+                            <label for="nome">Nome:</label>
+                            <input type="text" id="nome" name="nome" required>
+
+                            <label for="alianca">Aliança:</label>
+                            <input type="text" id="alianca" name="alianca" required>
+
+                            <label for="altura">Altura:</label>
+                            <input type="text" id="altura" name="altura" required>
+
+                            <label for="peso":>Peso:</label>
+                            <input type="text" id="peso" name="peso" required>
+
+                            <label for="sobre">Sobre:</label>
+                            <input type="text" id="sobre" name="sobre" required>
+
+                            <label for="especie">Espécie:</label>
+                            <input type="text" id="especie" name="especie" required>
+
+                            <label for="imagem">Link da imagem do card:</label>
+                            <input type="url" id="imagem" name="imagem" required>
+
+                            <label for="imagem2">Link da imagem secundária:</label>
+                            <input type="url" id="imagem2" name="imagem2" required>
+
+                            <label for="imgbg">Link da imagem de fundo:</label>
+                            <input type="url" id="imgbg" name="imgbg" required>
+
+                            <button id="btnCadastrar" type="submit">Cadastrar</button>
+
+                        </form>
+                     <% } %>
+
+                </section>
+
+            </main>
+
+            <footer>
+                <p>Todos os direitos reservados ©</p>
+            </footer>
+
+            <script src="scripts/script.js"></script>
+            <script>const closeMessage = document.querySelector("#close")
+                const message = document.querySelector("#message")
+                
+                closeMessage.addEventListener("click", function (){
+                    message.style.display = "none"
+                })</script>
+</body>
+
+</html>
